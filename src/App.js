@@ -86,10 +86,10 @@ const App = () => {
           <ZoomWithOrbital />
         </Suspense>
       </Canvas>
+      <Error credit={credit} error={error} setError={setError} />
+      <Purchase credit={credit} setCredit={setCredit} error={error} setError={setError} />
       <Suspense fallback={null}>
         <h4 style={{position: "absolute", top: "2em", left: "3em"}}>Credit: {credit}</h4>
-        <Error credit={credit} error={error} setError={setError} />
-        <Purchase credit={credit} setCredit={setCredit} error={error} setError={setError} />
         <Popup process={process} setProcess={setProcess} open={open} setOpen={setOpen} data={data} setCredit={setCredit} credit={credit} />
         <button onClick={handleProcess} style={{position: "absolute", bottom: "3em", left: "50%"}} >Buy Now - 15</button>
       </Suspense>
