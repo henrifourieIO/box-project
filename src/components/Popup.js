@@ -21,9 +21,9 @@ const Popup = ({ open , setOpen, process, setProcess, data, setCredit, credit })
         <div className="popup" style={{opacity:  `${process ? "1" : "0"}`, transition: "0.7s", display: `${process ? "block" : "none"}`}}>
             <h2>Your Reward is: </h2>
 
-            <div> 
-            <p> {data.name} </p>
-            
+            <div>
+                <p> {data.name} </p>
+                <p> {data.base_experience} </p>
             </div>
 
             <button onClick={handleOpen}>Claim</button>

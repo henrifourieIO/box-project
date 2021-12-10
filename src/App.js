@@ -59,12 +59,12 @@ const App = () => {
     if(credit >= 15 ) {
       const randomNumber =  Math.floor(Math.random()* 100);
       let res = await axios ("https://pokeapi.co/api/v2/pokemon/" + randomNumber)
-      setData(res.data);
+      await setData(res.data);
       console.log("Random Number: " + randomNumber)
-      setProcess(true)
-      setOpen(true)
+      await setProcess(true);
+      await setOpen(true);
       openChest.volume = 0.3;
-      openChest.play()
+      openChest.play();
     }
     else {
       setError(true);
@@ -89,9 +89,10 @@ const App = () => {
       <Error credit={credit} error={error} setError={setError} />
       <Purchase credit={credit} setCredit={setCredit} error={error} setError={setError} />
       <Suspense fallback={null}>
-        <h4 style={{position: "absolute", top: "2em", left: "3em"}}>Credit: {credit}</h4>
-        <Popup process={process} setProcess={setProcess} open={open} setOpen={setOpen} data={data} setCredit={setCredit} credit={credit} />
-        <button onClick={handleProcess} style={{position: "absolute", bottom: "3em", left: "50%"}} >Buy Now - 15</button>
+        <h4 className="credit">Credit - {credit}</h4>
+        {data ? <Popup process={process} setProcess={setProcess} open={open} setOpen={setOpen} data={data} setCredit={setCredit} credit={credit} /> : null}
+        <button className="btn" onClick={handleProcess} >Buy Now</button>
+        <p className="cost">15 Credits</p>
       </Suspense>
       <Loader />
     </>

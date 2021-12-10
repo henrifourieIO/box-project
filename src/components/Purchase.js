@@ -9,15 +9,18 @@ const Purchase = ({credit, setCredit, setError, error}) => {
         if(error === true ){
             setError(false)
         }
+
+        setValue(0)
     }
 
 
     return (
-        <div style={{zIndex: "500", position: "absolute", bottom: "3em", right: "2em"}}>
+        <div className="purchaseWrapper">
             <h3>Purchase Credit</h3>
 
             <form onSubmit={handlePruchase}>
-                <input 
+                <input
+                className="input"
                 type="number" 
                 name="ammount"
                 value={value}
